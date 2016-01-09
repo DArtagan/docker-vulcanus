@@ -1,0 +1,21 @@
+plex:
+  image: wernight/plex-media-server:latest
+  net: "host"
+  ports:
+    - "32400:32400"
+  restart: always
+  volumes:
+    - ./plex/plex-config:/config
+    - ./plex/media:/media
+
+mumble:
+  image: 7adietri/murmur
+  ports:
+    - "64738:64738"
+    - "64738:64738/udp"
+  volumes:
+    - ./murmur/data:/data
+# Other good images:
+# https://github.com/mattikus/docker-murmur
+# https://github.com/PHLAK/docker-mumble/blob/master/Dockerfile
+# https://github.com/diginc/docker-mumble
